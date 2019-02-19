@@ -21,6 +21,11 @@ class Modulizer
      */
     public $repository;
 
+    /**
+     * Register the file loaders to be bootstrapped
+     *
+     * @var array
+     */
     protected $fileLoaders = [
         RoutesLoader::class
     ];
@@ -28,6 +33,7 @@ class Modulizer
     /**
      * Modulizer constructor
      *
+     * @param \LaravelModulize\Contracts\ModulizerRepositoryInterface $repository
      * @param \Illuminate\Contracts\Foundation\Application $app
      */
     public function __construct(ModulizerRepositoryInterface $repository, Application $app)
@@ -36,7 +42,12 @@ class Modulizer
         $this->repository = $repository;
     }
 
-    public function bootstrapLoaders()
+    /**
+     * Bootstrap the file loaders for route, migration and translation files
+     *
+     * @return void
+     */
+    public function bootstrapFileLoaders()
     {
         if ($this->repository->hasModules()) {
             $this->getFileLoaders()->each(function ($fileLoader) {
@@ -45,11 +56,22 @@ class Modulizer
         }
     }
 
+    /**
+     * Create a new instance of the given class through the service container
+     *
+     * @param string $class
+     * @return mixed
+     */
     private function call(string $class)
     {
         return $this->app->make($class);
     }
 
+    /**
+     * Collect the fileLoaders for that should be bootstrapped
+     *
+     * @return \Illuminate\Support\Collection
+     */
     private function getFileLoaders(): Collection
     {
         return collect($this->fileLoaders);
