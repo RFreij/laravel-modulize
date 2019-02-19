@@ -34,13 +34,10 @@ class Modulizer
     {
         $this->app = $app;
         $this->repository = $repository;
-
-        $this->bootstrapLoaders();
     }
 
     public function bootstrapLoaders()
     {
-        dump($this->repository->hasModules());
         if ($this->repository->hasModules()) {
             $this->getFileLoaders()->each(function ($fileLoader) {
                 $this->call($fileLoader)->bootstrap();

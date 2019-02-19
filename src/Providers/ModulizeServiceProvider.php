@@ -42,12 +42,14 @@ class ModulizeServiceProvider extends BaseServiceProvider
         );
 
         $this->app->singleton('modulizer', function ($app) {
-            return new Modulizer($app);
+            return $app->make(Modulizer::class);
         });
 
         $this->mergeConfigFrom(
             $this->getDefaultConfigFilePath('modulizer'), 'modulizer'
         );
+
+        $this->app->get('modulizer')->bootstrapLoaders();
     }
 
 
