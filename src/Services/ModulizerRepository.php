@@ -146,12 +146,30 @@ class ModulizerRepository implements ModulizerRepositoryInterface
         return $this->getRootNamespace() . $this->getModulesNamespace() . $module;
     }
 
+    /**
+     * Add a translation path
+     *
+     * @param string $path
+     * @param string $namespace
+     * @return void
+     */
     public function addTranslation(string $path, string $namespace)
     {
         $this->translations[] = (object) [
             'path' => $path,
             'namespace' => $namespace,
         ];
+    }
+
+    /**
+     * Add a migration to the array
+     *
+     * @param string $migrationPath
+     * @return void
+     */
+    public function addMigrations(string $migrationPath)
+    {
+        $this->migrations[] = $migrationPath;
     }
 
     /**

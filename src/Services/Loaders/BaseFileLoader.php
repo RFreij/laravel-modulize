@@ -47,6 +47,14 @@ abstract class BaseFileLoader
     }
 
     /**
+     * Load the files to load and register them
+     *
+     * @param string $module
+     * @return void
+     */
+    public abstract function loadFiles(string $module): void;
+
+    /**
      * Retrieve the collection of files found for the given module
      *
      * @param string $module

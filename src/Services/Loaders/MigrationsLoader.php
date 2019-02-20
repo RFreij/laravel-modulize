@@ -18,7 +18,7 @@ class MigrationsLoader extends BaseFileLoader implements LoadsFiles
     public function loadFiles(string $module): void
     {
         if (!$this->getFilesToLoad($module)->isEmpty()) {
-            $this->repo->migrations[] = $this->getFilesPath($module);
+            $this->repo->addMigration($this->getFilesPath($module));
         }
     }
 

@@ -65,4 +65,36 @@ interface ModulizerRepositoryInterface
      */
     public function getModuleNamespace(string $module): string;
 
+    /**
+     * Collect all files preset at the given pattern
+     *
+     * @param string $path
+     * @return \Illuminate\Support\Collection
+     */
+    public function glob(string $pattern): Collection;
+
+    /**
+     * Determine if a path or file exists
+     *
+     * @param string $path
+     * @return boolean
+     */
+    public function filesExist(string $path): bool;
+
+    /**
+     * Add a translation path
+     *
+     * @param string $path
+     * @param string $namespace
+     * @return void
+     */
+    public function addTranslation(string $path, string $namespace);
+
+    /**
+     * Register factories.
+     *
+     * @param  string  $path
+     * @return void
+     */
+    public function registerEloquentFactoriesFrom($path);
 }

@@ -41,7 +41,7 @@ class ModulizeServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(ModulizerRepository::class, function ($app) {
+        $this->app->singleton(ModulizerRepository::class, function () {
             return new ModulizerRepository(new Filesystem());
         });
 
