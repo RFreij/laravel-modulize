@@ -1,5 +1,5 @@
 # Laravel Modulize API
-[![Build Status](https://travis-ci.com/RFreij/laravel-modulize-api.svg?branch=master)](https://travis-ci.com/RFreij/laravel-modulize-api)
+[![Build Status](https://travis-ci.com/RFreij/laravel-modulize.svg?branch=master)](https://travis-ci.com/RFreij/laravel-modulize-api)
 [![Downloads](https://img.shields.io/packagist/dt/netcreaties/laravel-modulize-api.svg
 )](https://packagist.org/packages/netcreaties/laravel-modulize-api)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/RFreij/laravel-modulize-api/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
@@ -23,7 +23,7 @@ The best way to install this package is through your terminal via Composer.
 
 Run the following command from your projects root
 ```shell
-composer require netcreaties/laravel-synchronize
+composer require netcreaties/laravel-modulize-api
 ```
 
 #### Laravel 5.5+
