@@ -2,12 +2,7 @@
 
 namespace LaravelModulize\Services\Loaders;
 
-use Illuminate\Support\Collection;
-use LaravelModulize\Contracts\LoadsFiles;
-use Illuminate\Contracts\Foundation\Application;
-use LaravelModulize\Contracts\ModulizerRepositoryInterface;
-
-class MigrationsLoader extends BaseFileLoader implements LoadsFiles
+class MigrationsLoader extends BaseFileLoader
 {
     /**
      * Load the files to load and register them

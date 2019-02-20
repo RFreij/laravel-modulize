@@ -2,12 +2,12 @@
 
 namespace LaravelModulize\Providers;
 
-use Illuminate\Support\Collection;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Collection;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use LaravelModulize\Contracts\ModulizerRepositoryInterface;
 use LaravelModulize\Services\Modulizer;
 use LaravelModulize\Services\ModulizerRepository;
-use LaravelModulize\Contracts\ModulizerRepositoryInterface;
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 /**
  * Service provider
@@ -41,8 +41,8 @@ class ModulizeServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(ModulizerRepository::class, function () {
-            return new ModulizerRepository(new Filesystem());
+        $this->app->singleton(ModulizerRepository::class, function ($app) {
+            return new ModulizerRepository(new Filesystem(), $app);
         });
 
         $this->app->bind(

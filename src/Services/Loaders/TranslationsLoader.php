@@ -3,9 +3,8 @@
 namespace LaravelModulize\Services\Loaders;
 
 use Illuminate\Support\Collection;
-use LaravelModulize\Contracts\LoadsFiles;
 
-class TranslationsLoader extends BaseFileLoader implements LoadsFiles
+class TranslationsLoader extends BaseFileLoader
 {
     /**
      * Load the files to load and register them

@@ -3,9 +3,10 @@
 namespace LaravelModulize\Services;
 
 use Illuminate\Console\DetectsApplicationNamespace;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use LaravelModulize\Contracts\ModulizerRepositoryInterface;
 
 class ModulizerRepository implements ModulizerRepositoryInterface
@@ -19,16 +20,21 @@ class ModulizerRepository implements ModulizerRepositoryInterface
     /**
      * Instance of Filesystem
      *
-     * @var \Illuminate\Contracts\Filesystem\Filesystem
+     * @var \Illuminate\Filesystem\Filesystem
      */
     protected $filesystem;
+
+    /**
+     * @var \Illuminate\Contracts\Foundation\Application
+     */
+    protected $app;
 
     /**
      * Construct ModulizerRepository
      *
      * @param \Illuminate\Filesystem\Filesystem $filesystem
      */
-    public function __construct(Filesystem $filesystem)
+    public function __construct(Filesystem $filesystem, Application $app)
     {
         $this->filesystem = $filesystem;
     }

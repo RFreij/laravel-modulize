@@ -2,12 +2,7 @@
 
 namespace LaravelModulize\Services\Loaders;
 
-use Illuminate\Support\Collection;
-use LaravelModulize\Contracts\LoadsFiles;
-use Illuminate\Contracts\Foundation\Application;
-use LaravelModulize\Contracts\ModulizerRepositoryInterface;
-
-class FactoriesLoader extends BaseFileLoader implements LoadsFiles
+class FactoriesLoader extends BaseFileLoader
 {
     /**
      * Load the files to load and register them
@@ -18,7 +13,7 @@ class FactoriesLoader extends BaseFileLoader implements LoadsFiles
     public function loadFiles(string $module): void
     {
         if (!$this->getFilesToLoad($module)->isEmpty()) {
-            $this->repo->registerEloquentFactoriesFrom($this->getFilesPath());
+            $this->repo->registerEloquentFactoriesFrom($this->getFilesPath($module));
         }
     }
 

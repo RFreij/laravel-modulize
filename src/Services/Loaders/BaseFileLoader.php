@@ -2,8 +2,8 @@
 
 namespace LaravelModulize\Services\Loaders;
 
-use Illuminate\Support\Collection;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\Collection;
 use LaravelModulize\Contracts\ModulizerRepositoryInterface;
 
 abstract class BaseFileLoader
@@ -47,14 +47,6 @@ abstract class BaseFileLoader
     }
 
     /**
-     * Load the files to load and register them
-     *
-     * @param string $module
-     * @return void
-     */
-    public abstract function loadFiles(string $module): void;
-
-    /**
      * Retrieve the collection of files found for the given module
      *
      * @param string $module
@@ -70,4 +62,28 @@ abstract class BaseFileLoader
             $this->getFilesPath($module)
         );
     }
+
+    /**
+     * Load the files to load and register them
+     *
+     * @param string $module
+     * @return void
+     */
+    abstract public function loadFiles(string $module): void;
+
+    /**
+     * Retrieve the path where the files to load should be at
+     *
+     * @param string $module
+     * @return string
+     */
+    abstract public function getFilesPath(string $module): string;
+
+    /**
+     * Retrieve the namespace to be used when registering the files
+     *
+     * @param string $module
+     * @return string
+     */
+    abstract public function getNamespace(string $module): string;
 }

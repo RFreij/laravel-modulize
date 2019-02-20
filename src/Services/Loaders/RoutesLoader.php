@@ -2,14 +2,10 @@
 
 namespace LaravelModulize\Services\Loaders;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
-use LaravelModulize\Contracts\LoadsFiles;
-use Illuminate\Contracts\Foundation\Application;
-use LaravelModulize\Contracts\ModulizerRepositoryInterface;
+use Illuminate\Support\Str;
 
-class RoutesLoader extends BaseFileLoader implements LoadsFiles
+class RoutesLoader extends BaseFileLoader
 {
     /**
      * Load the files to load and register them
@@ -62,8 +58,8 @@ class RoutesLoader extends BaseFileLoader implements LoadsFiles
     private function parseNamespace(string $module, string $baseName): string
     {
         $namespace = Str::contains($baseName, 'Routes')
-            ? Str::start(Str::studly(Str::before($baseName, 'Routes')), '\\')
-            : '';
+        ? Str::start(Str::studly(Str::before($baseName, 'Routes')), '\\')
+        : '';
 
         return $this->getNamespace($module) . $namespace;
     }

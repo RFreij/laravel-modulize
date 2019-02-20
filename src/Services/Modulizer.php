@@ -2,13 +2,13 @@
 
 namespace LaravelModulize\Services;
 
-use Illuminate\Support\Collection;
 use Illuminate\Contracts\Foundation\Application;
-use LaravelModulize\Services\Loaders\RoutesLoader;
+use Illuminate\Support\Collection;
+use LaravelModulize\Contracts\ModulizerRepositoryInterface;
 use LaravelModulize\Services\Loaders\FactoriesLoader;
 use LaravelModulize\Services\Loaders\MigrationsLoader;
+use LaravelModulize\Services\Loaders\RoutesLoader;
 use LaravelModulize\Services\Loaders\TranslationsLoader;
-use LaravelModulize\Contracts\ModulizerRepositoryInterface;
 
 class Modulizer
 {
