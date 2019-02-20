@@ -1,5 +1,12 @@
 build:
     nodes:
+        coverage:
+            tests:
+                override:
+                  - command: ./vendor/bin/phpunit --coverage-clover 'reports/clover.xml'
+                    coverage:
+                        file: reports/clover.xml
+                        format: clover
         analysis:
             project_setup:
                 override: true
