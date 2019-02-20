@@ -97,4 +97,12 @@ interface ModulizerRepositoryInterface
      * @return void
      */
     public function registerEloquentFactoriesFrom($path);
+
+    /**
+     * Add a migration to the array
+     *
+     * @param string $migrationPath
+     * @return void
+     */
+    public function addMigrations(string $migrationPath);
 }
