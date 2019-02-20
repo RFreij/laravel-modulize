@@ -1,12 +1,19 @@
 build:
     nodes:
         coverage:
+            environment:
+            php:
+                version: 7.2
+            dependencies:
+                before:
+                    - composer require phpunit/phpunit:^7.0 --dev
             tests:
                 override:
-                  - command: ./vendor/bin/phpunit --coverage-clover 'reports/clover.xml'
-                    coverage:
-                        file: reports/clover.xml
-                        format: clover
+                    -
+                        command: vendor/bin/phpunit --coverage-clover=clover.xml
+                        coverage:
+                            file: clover.xml
+                            format: php-clover
         analysis:
             project_setup:
                 override: true
