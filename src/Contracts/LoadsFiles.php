@@ -21,12 +21,4 @@ interface LoadsFiles
      * @return string
      */
     public function getNamespace(string $module): string;
-
-    /**
-     * Load the files to load and register them
-     *
-     * @param string $module
-     * @return void
-     */
-    public function loadFiles(string $module): void;
 }
