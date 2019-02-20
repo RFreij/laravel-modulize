@@ -104,5 +104,5 @@ interface ModulizerRepositoryInterface
      * @param string $migrationPath
      * @return void
      */
-    public function addMigrations(string $migrationPath);
+    public function addMigration(string $migrationPath);
 }
