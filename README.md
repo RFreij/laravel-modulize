@@ -1,5 +1,5 @@
 # Laravel Modulize API
-[![Build Status](https://travis-ci.com/RFreij/laravel-modulize.svg?branch=master)](https://travis-ci.com/RFreij/laravel-modulize-api)
+[![Build Status](https://travis-ci.com/RFreij/laravel-modulize-api.svg?branch=master)](https://travis-ci.com/RFreij/laravel-modulize-api)
 [![Downloads](https://img.shields.io/packagist/dt/netcreaties/laravel-modulize-api.svg
 )](https://packagist.org/packages/netcreaties/laravel-modulize-api)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/RFreij/laravel-modulize-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/RFreij/laravel-modulize-api/?branch=master)
