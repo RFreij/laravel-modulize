@@ -36,6 +36,7 @@ class ModulizerRepository implements ModulizerRepositoryInterface
      */
     public function __construct(Filesystem $filesystem, Application $app)
     {
+        $this->app = $app;
         $this->filesystem = $filesystem;
     }
 
