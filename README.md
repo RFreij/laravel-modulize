@@ -1,35 +1,45 @@
-# laravel-package-boilerplate
+# Laravel Modulize API
+[![Build Status](https://travis-ci.com/RFreij/laravel-modulize-api.svg?branch=master)](https://travis-ci.com/RFreij/laravel-modulize-api)
+[![Downloads](https://img.shields.io/packagist/dt/netcreaties/laravel-modulize-api.svg
+)](https://packagist.org/packages/netcreaties/laravel-modulize-api)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/RFreij/laravel-modulize-api/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/RFreij/laravel-modulize-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/RFreij/laravel-modulize-api/?branch=master)
 
-Boilerplate for Laravel packages. Use it as a starting point for your own Laravel packages.
+This package gives you the ability to create synchronization files and prevent you from having to write one time use commands when you've got for example: A database structure change that will require you to modulize-api the old structure data with the new structure.
 
-Includes PHPUnit and PHPCodeSniffer configuration, as well as a known good Travis CI configuration and a couple of base test cases. Uses `orchestra/testbench` as the basis of the provided base test.
+## Documentation
+- [Laravel Modulize API](#laravel-modulize-api)
+  - [Documentation](#documentation)
+  - [Installation](#installation)
+      - [Laravel 5.5+](#laravel-55)
+  - [Getting started](#getting-started)
+      - [Publish config](#publish-config)
+  - [Usage](#usage)
 
-Also includes my [Artisan Standalone](https://github.com/matthewbdaly/artisan-standalone) package as a development dependency. As a result, you should be able to run Artisan commands as follows:
+<a name="installation"></a>
+## Installation
 
-```bash
-vendor/bin/artisan make:model Example
+The best way to install this package is through your terminal via Composer.
+
+Run the following command from your projects root
+```shell
+composer require netcreaties/laravel-synchronize
 ```
 
-How do I use it?
-----------------
-###### Step 1
-```bash
-composer create-project matthewbdaly/laravel-package-boilerplate <YOUR_NEW_PACKAGE_DIRECTORY>
+#### Laravel 5.5+
+This package supports package discovery.
+
+---
+
+<a name="getting-started"></a>
+## Getting started
+
+#### Publish config
+Publishing the config will enable you to overwrite some of the settings this package uses. For example you can define where modules should be stored.
+```shell
+php artisan vendor:publish --provider="LaravelModulize\\Providers\\ModulizeServiceProvider" --tag="config"
 ```
 
-This will generate a starting boilerplate for your app.
+<a name="usage"></a>
+## Usage
 
-###### Step 2
-You'll want to update your `composer.json` with your required namespace and other details - you can do this by running
-```bash
- vendor/bin/artisan app:name InsertYourProjectNameHere
- ```
-
-Test cases
-----------
-
-The package includes three test cases:
-
-* `TestCase` - Effectively the normal Laravel test case. Use it the same way you would your normal Laravel test case
-* `SimpleTestCase` - Extends the default PHPUnit test case, so it doesn't set up a Laravel application, making it quicker and well-suited to properly isolated unit tests
-* `BrowserKitTestCase` - Sets up BrowserKit

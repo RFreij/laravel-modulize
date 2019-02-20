@@ -8,22 +8,22 @@ trait CreatesApplication
 {
     protected function getPackageProviders($app)
     {
-        return ['Package\ServiceProvider'];
+        return ['LaravelModulize\\Providers\\ModulizeServiceProvider'];
     }
 
-    protected function getPackageAliases($app)
-    {
-        return [
-            'Facade' => 'Package\Facade'
-        ];
-    }
+    // protected function getPackageAliases($app)
+    // {
+    //     return [
+    //         'Facade' => 'Package\Facade'
+    //     ];
+    // }
 
     public function setUp()
     {
         parent::setUp();
-        $this->artisan('migrate', ['--database' => 'sqlite']);
-        $this->loadLaravelMigrations(['--database' => 'sqlite']);
-        $this->withFactories(__DIR__.'/factories');
+        // $this->artisan('migrate', ['--database' => 'sqlite']);
+        // $this->loadLaravelMigrations(['--database' => 'sqlite']);
+        // $this->withFactories(__DIR__.'/factories');
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace LaravelModulize\Providers;
 
+use Illuminate\Support\Collection;
 use Illuminate\Filesystem\Filesystem;
 use LaravelModulize\Services\Modulizer;
 use LaravelModulize\Services\ModulizerRepository;
@@ -21,6 +22,16 @@ class ModulizeServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->app->get('modulizer')->bootstrapFileLoaders();
+
+        $this->loadMigrationsFrom($this->app->get(ModulizerRepository::class)->migrations);
+
+        $this->loadTranslations(
+            collect($this->app->get(ModulizerRepository::class)->translations)
+        );
+
+        $this->publishes([
+            $this->getDefaultConfigFilePath('modulizer') => config_path('modulizer.php'),
+        ], 'config');
     }
 
     /**
@@ -48,7 +59,6 @@ class ModulizeServiceProvider extends BaseServiceProvider
         );
     }
 
-
     /**
      * Get default configuration file path
      *
@@ -57,5 +67,15 @@ class ModulizeServiceProvider extends BaseServiceProvider
     public function getDefaultConfigFilePath($configName)
     {
         return realpath(__DIR__ . "/../config/{$configName}.php");
+    }
+
+    protected function loadTranslations(Collection $translations)
+    {
+        $translations->each(function ($translationsFile) {
+            $this->loadTranslationsFrom(
+                $translationsFile->path,
+                $translationsFile->namespace
+            );
+        });
     }
 }

@@ -3,8 +3,11 @@
 namespace LaravelModulize\Services;
 
 use Illuminate\Support\Collection;
-use LaravelModulize\Services\RoutesLoader;
 use Illuminate\Contracts\Foundation\Application;
+use LaravelModulize\Services\Loaders\RoutesLoader;
+use LaravelModulize\Services\Loaders\FactoriesLoader;
+use LaravelModulize\Services\Loaders\MigrationsLoader;
+use LaravelModulize\Services\Loaders\TranslationsLoader;
 use LaravelModulize\Contracts\ModulizerRepositoryInterface;
 
 class Modulizer
@@ -27,7 +30,10 @@ class Modulizer
      * @var array
      */
     protected $fileLoaders = [
-        RoutesLoader::class
+        RoutesLoader::class,
+        MigrationsLoader::class,
+        FactoriesLoader::class,
+        TranslationsLoader::class,
     ];
 
     /**
@@ -62,7 +68,7 @@ class Modulizer
      * @param string $class
      * @return mixed
      */
-    private function call(string $class)
+    protected function call(string $class)
     {
         return $this->app->make($class);
     }
@@ -72,7 +78,7 @@ class Modulizer
      *
      * @return \Illuminate\Support\Collection
      */
-    private function getFileLoaders(): Collection
+    protected function getFileLoaders(): Collection
     {
         return collect($this->fileLoaders);
     }

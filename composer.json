@@ -1,5 +1,5 @@
 {
-    "name": "netcreaties/laravel-modulize",
+    "name": "netcreaties/laravel-modulize-api",
     "description": "Creating easy to use modules without having to configure them.",
     "type": "library",
     "keywords": ["laravel"],
