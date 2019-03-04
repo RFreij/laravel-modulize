@@ -69,6 +69,14 @@ class ModulizeServiceProvider extends BaseServiceProvider
         return realpath(__DIR__ . "/../config/{$configName}.php");
     }
 
+    /**
+     * Load translation files
+     *
+     * @param Collection $translations
+     * @return void
+     * @author Roy Freij <Roy@bsbip.com>
+     * @date 2019-03-04
+     */
     protected function loadTranslations(Collection $translations)
     {
         $translations->each(function ($translationsFile) {

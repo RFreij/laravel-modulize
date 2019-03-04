@@ -47,7 +47,7 @@ class ModulizerRepository implements ModulizerRepositoryInterface
      */
     public function getBasePath(): string
     {
-        return config('modulizer.modules_path');
+        return app_path(config('modulizer.modules_path'));
     }
 
     /**
