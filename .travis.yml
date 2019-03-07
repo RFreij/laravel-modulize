@@ -13,4 +13,4 @@ script: vendor/bin/phpunit
 after_success:
     - travis_retry php vendor/bin/phpunit --coverage-clover=coverage.clover
     - travis_retry wget https://scrutinizer-ci.com/ocular.phar
-    - travis_retry php ocular.phar code-coverage:upload --repository=rfreij/laravel-modulize-api --access-token="7bf8a49cb9f15061ea2c36efc0e9ddeacb4424379e7cf826a46a2c707e6e8a0c" --format=php-clover coverage.clover
+    - travis_retry php ocular.phar code-coverage:upload --access-token="4fb2bcdda7f331274bf7b52ab719b4ed5adfffd328044b836137d3ac59bccaf1" --format=php-clover coverage.clover
