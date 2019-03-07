@@ -27,3 +27,6 @@ checks:
 
 tools:
     php_code_coverage: true
+    external_code_coverage:
+        timeout: 600
+        runs: 3
