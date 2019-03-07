@@ -1,3 +1,5 @@
+# Currently in development
+
 # Laravel Modulize API
 [![Build Status](https://travis-ci.com/RFreij/laravel-modulize-api.svg?branch=master)](https://travis-ci.com/RFreij/laravel-modulize-api)
 [![Downloads](https://img.shields.io/packagist/dt/netcreaties/laravel-modulize-api.svg
