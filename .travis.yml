@@ -8,9 +8,10 @@ before_script:
     - travis_retry composer self-update
     - travis_retry composer install --no-interaction --prefer-source --dev
 
-script: vendor/bin/phpunit
-
-after_success:
+script:
     - travis_retry php vendor/bin/phpunit --coverage-clover=coverage.clover
     - travis_retry wget https://scrutinizer-ci.com/ocular.phar
     - travis_retry php ocular.phar code-coverage:upload --repository=g/RFreij/laravel-modulize-api --format=php-clover coverage.clover
+
+after_success:
+    - travis_retry php vendor/bin/php-coveralls
