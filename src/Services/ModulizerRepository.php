@@ -189,4 +189,47 @@ class ModulizerRepository implements ModulizerRepositoryInterface
     {
         $this->app->make(EloquentFactory::class)->load($path);
     }
+
+    /**
+     * Create directory at given path
+     *
+     * @param string $path
+     * @return void
+     * @author Roy Freij <Roy@bsbip.com>
+     * @date 2019-03-04
+     */
+    public function createDirectory(string $path): void
+    {
+        if (!$this->filesExist($path)) {
+            $this->filesystem->makeDirectory($path, 0755, true);
+        }
+    }
+
+    /**
+     * Retrieve the database folder path of given module
+     *
+     * @param string $module
+     * @return string
+     * @author Roy Freij <Roy@bsbip.com>
+     * @date 2019-03-04
+     */
+    public function databasePath(string $module): string
+    {
+        return $this->getModulePath($module) . '/database';
+    }
+
+    public function exceptionPath(string $module): string
+    {
+        return $this->getModulePath($module) . '/Exceptions';
+    }
+
+    public function modelPath(string $module): string
+    {
+        return $this->getModulePath($module) . '/Models';
+    }
+
+    public function controllerPath(string $module): string
+    {
+        return $this->getModulePath($module) . '/Http/Controllers';
+    }
 }

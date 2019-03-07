@@ -105,4 +105,31 @@ interface ModulizerRepositoryInterface
      * @return void
      */
     public function addMigration(string $migrationPath);
+
+    /**
+     * Create directory at given path
+     *
+     * @param string $path
+     * @return void
+     * @author Roy Freij <Roy@bsbip.com>
+     * @date 2019-03-04
+     */
+    public function createDirectory(string $path): void;
+
+    /**
+     * Retrieve the database folder path of given module
+     *
+     * @param string $module
+     * @return string
+     * @author Roy Freij <Roy@bsbip.com>
+     * @date 2019-03-04
+     */
+    public function databasePath(string $module): string;
+
+
+    public function exceptionPath(string $module): string;
+
+    public function modelPath(string $module): string;
+
+    public function controllerPath(string $module): string;
 }

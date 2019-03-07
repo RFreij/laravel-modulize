@@ -7,5 +7,10 @@ use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication, MockeryPHPUnitIntegration;
+    use MockeryPHPUnitIntegration;
+
+    protected function getPackageProviders($app)
+    {
+        return ['LaravelModulize\\Providers\\ModulizeServiceProvider'];
+    }
 }

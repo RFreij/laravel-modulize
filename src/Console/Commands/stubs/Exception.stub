@@ -1,0 +1,10 @@
+<?php
+
+namespace DummyNamespace\Exceptions;
+
+use Exception;
+
+class DummyException extends Exception
+{
+
+}

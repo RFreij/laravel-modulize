@@ -1,0 +1,10 @@
+<?php
+
+use DummyNamespace\Models\DummyModel;
+
+$factory->define(DummyModel::class,
+    function (Faker\Generator $faker) {
+        return [
+            //
+        ];
+    });
