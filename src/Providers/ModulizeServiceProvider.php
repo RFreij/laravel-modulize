@@ -2,12 +2,17 @@
 
 namespace LaravelModulize\Providers;
 
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use LaravelModulize\Contracts\ModulizerRepositoryInterface;
+use Illuminate\Filesystem\Filesystem;
 use LaravelModulize\Services\Modulizer;
 use LaravelModulize\Services\ModulizerRepository;
+use LaravelModulize\Console\Commands\CreateModuleCommand;
+use LaravelModulize\Console\Commands\GenerateModelCommand;
+use LaravelModulize\Contracts\ModulizerRepositoryInterface;
+use LaravelModulize\Console\Commands\GenerateFactoryCommand;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use LaravelModulize\Console\Commands\GenerateExceptionCommand;
+use LaravelModulize\Console\Commands\GenerateControllerCommand;
 
 /**
  * Service provider
@@ -32,6 +37,8 @@ class ModulizeServiceProvider extends BaseServiceProvider
         $this->publishes([
             $this->getDefaultConfigFilePath('modulizer') => config_path('modulizer.php'),
         ], 'config');
+
+        $this->loadCommands();
     }
 
     /**
@@ -75,7 +82,7 @@ class ModulizeServiceProvider extends BaseServiceProvider
      * @param Collection $translations
      * @return void
      * @author Roy Freij <Roy@bsbip.com>
-     * @date 2019-03-04
+     * @version 2019-03-04
      */
     protected function loadTranslations(Collection $translations)
     {
@@ -85,5 +92,18 @@ class ModulizeServiceProvider extends BaseServiceProvider
                 $translationsFile->namespace
             );
         });
+    }
+
+    protected function loadCommands()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                CreateModuleCommand::class,
+                GenerateFactoryCommand::class,
+                GenerateExceptionCommand::class,
+                GenerateModelCommand::class,
+                GenerateControllerCommand::class,
+            ]);
+        }
     }
 }
