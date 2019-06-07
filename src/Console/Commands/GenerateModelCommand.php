@@ -2,6 +2,9 @@
 
 namespace LaravelModulize\Console\Commands;
 
+use Illuminate\Support\Str;
+use LaravelModulize\Support\Entity;
+
 class GenerateModelCommand extends BaseGeneratorCommand
 {
     /**
@@ -30,13 +33,17 @@ class GenerateModelCommand extends BaseGeneratorCommand
         if ($this->option('controller')) {
             $this->call('modulize:make:controller', [
                 'module' => $this->module,
-                'name' => $this->getClassName($this->getNameInput()) . 'Controller',
+                'name' => Entity::getClassName($this->getNameInput()) . 'Controller',
                 '--model' => $this->getNameInput(),
             ]);
         }
 
         if ($this->option('migration')) {
-
+            $tableName = Str::plural(Str::snake(Entity::getClassName($this->getNameInput())));
+            $this->call('make:migration', [
+                'name' => "create_{$tableName}_table",
+                '--create' => $tableName
+            ]);
         }
     }
 
@@ -76,10 +83,11 @@ class GenerateModelCommand extends BaseGeneratorCommand
         ];
 
         $replacements = [
-            $this->getClassName($this->getNameInput()),
+            Entity::getClassName($this->getNameInput()),
             $this->repository->getModuleNamespace($this->module),
-            $this->convertPathToNamespace($this->getNameInput()),
+            Entity::convertPathToNamespace($this->getNameInput()),
         ];
+
         return str_replace($dummies, $replacements, parent::buildClass($name));
     }
 

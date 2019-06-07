@@ -112,7 +112,7 @@ interface ModulizerRepositoryInterface
      * @param string $path
      * @return void
      * @author Roy Freij <Roy@bsbip.com>
-     * @date 2019-03-04
+     * @version 2019-03-04
      */
     public function createDirectory(string $path): void;
 
@@ -122,7 +122,7 @@ interface ModulizerRepositoryInterface
      * @param string $module
      * @return string
      * @author Roy Freij <Roy@bsbip.com>
-     * @date 2019-03-04
+     * @version 2019-03-04
      */
     public function databasePath(string $module): string;
 

@@ -82,7 +82,7 @@ class ModulizeServiceProvider extends BaseServiceProvider
      * @param Collection $translations
      * @return void
      * @author Roy Freij <Roy@bsbip.com>
-     * @date 2019-03-04
+     * @version 2019-03-04
      */
     protected function loadTranslations(Collection $translations)
     {

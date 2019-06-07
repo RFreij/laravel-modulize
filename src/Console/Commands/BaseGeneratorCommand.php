@@ -2,7 +2,6 @@
 
 namespace LaravelModulize\Console\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Console\GeneratorCommand;
 use LaravelModulize\Contracts\ModulizerRepositoryInterface;
@@ -49,29 +48,5 @@ abstract class BaseGeneratorCommand extends GeneratorCommand
         }
 
         parent::handle();
-    }
-
-    protected function getClassName($name)
-    {
-        return Str::contains($name, '/')
-            ? array_reverse(explode('/', $name, 2))[0]
-            : $name;
-    }
-
-    protected function getClassNamespace($name)
-    {
-        return Str::contains($name, '/')
-            ? $this->convertPathToNamespace($name)
-            : '';
-    }
-
-    protected function convertPathToNamespace($name)
-    {
-        return Str::start(str_replace('/', '', $this->getPathBeforeClassName($name)), '\\');
-    }
-
-    protected function getPathBeforeClassName($name)
-    {
-        return Str::before($name, $this->getClassName($name));
     }
 }

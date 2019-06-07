@@ -3,6 +3,7 @@
 namespace LaravelModulize\Console\Commands;
 
 use Illuminate\Support\Str;
+use LaravelModulize\Support\Entity;
 
 class GenerateControllerCommand extends BaseGeneratorCommand
 {
@@ -69,13 +70,16 @@ class GenerateControllerCommand extends BaseGeneratorCommand
             'DummyLowercasedModel',
             'DummyControllerNamespace',
             'DummyModuleNamespace',
+            'ModelName',
         ];
 
+        $modelName = Entity::getClassName($this->option('model'));
+
         $replacements = [
-            $this->getClassName($this->getNameInput()),
+            Entity::getClassName($this->getNameInput()),
             str_replace('/', '\\', $this->option('model')),
             Str::lower($this->option('model')),
-            $this->getClassNamespace($this->getNameInput()),
+            Entity::getClassNamespace($this->getNameInput()),
             $this->repository->getModuleNamespace($this->module),
         ];
 
